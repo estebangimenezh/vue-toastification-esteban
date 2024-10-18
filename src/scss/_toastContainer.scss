@@ -1,6 +1,5 @@
-@use "sass:math";
-
 .#{$vt-namespace}__container {
+  // Estilos generales del contenedor
   z-index: $vt-z-index;
   position: fixed;
   padding: 4px;
@@ -12,7 +11,9 @@
   flex-direction: column;
   pointer-events: none;
 
-  @media #{$vt-not-mobile} {
+  // Estilos para pantallas de 600px o más (aplicados siempre)
+  // Removemos la media query para que estos estilos sean globales
+  // @media #{$vt-not-mobile} {
     &.top-left,
     &.top-right,
     &.top-center {
@@ -32,8 +33,7 @@
       .#{$vt-namespace}__toast {
         margin-right: auto;
       }
-      // Firefox does not apply rtl rules to containers and margins, it appears.
-      // See https://github.com/Maronato/vue-toastification/issues/179
+      // Soporte para Firefox y RTL
       @supports not (-moz-appearance:none) {
         .#{$vt-namespace}__toast--rtl {
           margin-right: unset;
@@ -48,8 +48,7 @@
       .#{$vt-namespace}__toast {
         margin-left: auto;
       }
-      // Firefox does not apply rtl rules to containers and margins, it appears.
-      // See https://github.com/Maronato/vue-toastification/issues/179
+      // Soporte para Firefox y RTL
       @supports not (-moz-appearance:none) {
         .#{$vt-namespace}__toast--rtl {
           margin-left: unset;
@@ -67,26 +66,10 @@
         margin-right: auto;
       }
     }
-  }
+  // }
 
-  @media #{$vt-mobile} {
-    width: 100vw;
-    padding: 0;
-    left: 0;
-    margin: 0;
-    .#{$vt-namespace}__toast {
-      width: 100%;
-    }
-    &.top-left,
-    &.top-right,
-    &.top-center {
-      top: 0;
-    }
-    &.bottom-left,
-    &.bottom-right,
-    &.bottom-center {
-      bottom: 0;
-      flex-direction: column-reverse;
-    }
-  }
+  // Comentamos o eliminamos los estilos para móviles
+  // @media #{$vt-mobile} {
+  //   // Estilos específicos para móviles que ya no se aplicarán
+  // }
 }
